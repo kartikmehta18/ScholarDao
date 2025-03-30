@@ -8,7 +8,7 @@ Students are required to upload their documents, which will be verified through 
 For transactions, we are integrating EduChain, a blockchain-based system, which will handle the transfer of funds securely and transparently. Using EduChain, all transactions related to scholarship funds will be traceable, providing real-time updates to applicants and officers. This blockchain integration ensures that every transaction is recorded on a decentralized ledger, making the entire process tamper-proof and more trustworthy.
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://drive.google.com/file/d/1twyGU5xK78iprZu0NI7RHj_dxzUGsImS/view?usp=sharing)
 
 
 ## Instruction
