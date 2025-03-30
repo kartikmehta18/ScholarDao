@@ -76,7 +76,7 @@ To run this project, you will need to add the following environment variables to
 
 **Client:** React, TailwindCSS , Shadcn, Educhain 
 
-**Server:** Node, Express, supabase , Hardhat , Solidity ,Anon Aadhaar
+**Server:**  Supabase ,  Solidity ,Anon Aadhaar
 
 
 ## License
