@@ -10,11 +10,20 @@ For transactions, we are integrating EduChain, a blockchain-based system, which 
 
 Live Link: https://acehack-scholardao.vercel.app/
 
-<img src="image.jpeg" alt="Image 1" width="700" height="400" />
-<img src="image2.jpeg" alt="Image 2" width="700" height="400" />
-<img src="image3.jpeg" alt="Image 3" width="700" height="400" />
-<img src="image4.jpeg" alt="Image 4" width="700" height="400" />
-<img src="image6.jpeg" alt="Image 5" width="700" height="400" />
+<table>
+  <tr>
+    <td><img src="image.jpeg" alt="Image 1" width="300" /></td>
+    <td align="right"><img src="image2.jpeg" alt="Image 2" width="300" /></td>
+  </tr>
+  <tr>
+    <td><img src="image3.jpeg" alt="Image 3" width="300" /></td>
+    <td align="right"><img src="image4.jpeg" alt="Image 4" width="300" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><img src="image6.jpeg" alt="Image 5" width="300" /></td>
+  </tr>
+</table>
+
 
 ## Instruction
 
