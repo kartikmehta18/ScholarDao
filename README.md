@@ -6,9 +6,23 @@ Claiming government scholarships is a complicated process involving manual steps
 Students are required to upload their documents, which will be verified through a multifactor authentication system, including video and photo verification. To ensure security and privacy, we are using Zero-Knowledge Proof (ZK-Poof) technology for document verification. This allows the system to verify the documents without revealing any personal details, ensuring full confidentiality.
 
 For transactions, we are integrating EduChain, a blockchain-based system, which will handle the transfer of funds securely and transparently. Using EduChain, all transactions related to scholarship funds will be traceable, providing real-time updates to applicants and officers. This blockchain integration ensures that every transaction is recorded on a decentralized ledger, making the entire process tamper-proof and more trustworthy.
-## Screenshots
+## Screenshots And Live Link
 
-![ScholarDao Screenshot](https://drive.google.com/file/d/1twyGU5xK78iprZu0NI7RHj_dxzUGsImS/view?usp=sharing)
+Live Link: https://acehack-scholardao.vercel.app/
+
+<table>
+  <tr>
+    <td><img src="image.jpeg" alt="Image 1" width="500" /></td>
+    <td align="right"><img src="image2.jpeg" alt="Image 2" width="500" /></td>
+  </tr>
+  <tr>
+    <td><img src="image3.jpeg" alt="Image 3" width="500" /></td>
+    <td align="right"><img src="image4.jpeg" alt="Image 4" width="500" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><img src="image6.jpeg" alt="Image 5" width="500" /></td>
+  </tr>
+</table>
 
 
 ## Instruction
@@ -62,7 +76,7 @@ To run this project, you will need to add the following environment variables to
 
 **Client:** React, TailwindCSS , Shadcn, Educhain 
 
-**Server:** Node, Express, supabase , Hardhat , Solidity ,Anon Aadhaar
+**Server:**  Supabase ,  Solidity ,Anon Aadhaar
 
 
 ## License
