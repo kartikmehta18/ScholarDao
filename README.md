@@ -8,7 +8,7 @@ Students are required to upload their documents, which will be verified through 
 For transactions, we are integrating EduChain, a blockchain-based system, which will handle the transfer of funds securely and transparently. Using EduChain, all transactions related to scholarship funds will be traceable, providing real-time updates to applicants and officers. This blockchain integration ensures that every transaction is recorded on a decentralized ledger, making the entire process tamper-proof and more trustworthy.
 ## Screenshots
 
-![App Screenshot](https://drive.google.com/file/d/1twyGU5xK78iprZu0NI7RHj_dxzUGsImS/view?usp=sharing)
+![ScholarDao Screenshot](https://drive.google.com/file/d/1twyGU5xK78iprZu0NI7RHj_dxzUGsImS/view?usp=sharing)
 
 
 ## Instruction
@@ -60,12 +60,20 @@ To run this project, you will need to add the following environment variables to
 
 ## Tech Stack
 
-**Client:** React, TailwindCSS , Educhain 
+**Client:** React, TailwindCSS , Shadcn, Educhain 
 
-**Server:** Node, Express
+**Server:** Node, Express, supabase , Hardhat , Solidity ,Anon Aadhaar
 
 
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Features
+
+- Light/dark mode toggle
+- Live previews
+- Fullscreen mode
+- Cross platform
 
