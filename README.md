@@ -12,15 +12,15 @@ Live Link: https://acehack-scholardao.vercel.app/
 
 <table>
   <tr>
-    <td><img src="image.jpeg" alt="Image 1" width="300" /></td>
-    <td align="right"><img src="image2.jpeg" alt="Image 2" width="300" /></td>
+    <td><img src="image.jpeg" alt="Image 1" width="500" /></td>
+    <td align="right"><img src="image2.jpeg" alt="Image 2" width="500" /></td>
   </tr>
   <tr>
-    <td><img src="image3.jpeg" alt="Image 3" width="300" /></td>
-    <td align="right"><img src="image4.jpeg" alt="Image 4" width="300" /></td>
+    <td><img src="image3.jpeg" alt="Image 3" width="500" /></td>
+    <td align="right"><img src="image4.jpeg" alt="Image 4" width="500" /></td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><img src="image6.jpeg" alt="Image 5" width="300" /></td>
+    <td colspan="2" align="center"><img src="image6.jpeg" alt="Image 5" width="500" /></td>
   </tr>
 </table>
 
