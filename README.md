@@ -11,6 +11,10 @@ For transactions, we are integrating EduChain, a blockchain-based system, which 
 Live Link: https://acehack-scholardao.vercel.app/
 
 ![alt text](image.jpeg)
+![alt text](image2.jpeg)
+![alt text](image3.jpeg)
+![alt text](image4.jpeg)
+![alt text](image5.jpeg)
 ## Instruction
 
 Kindly follow the following Instructions to run the project in your system and install the necessary requirements
