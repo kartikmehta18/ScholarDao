@@ -6,6 +6,7 @@ import { ArrowRight, Shield, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AnonAadhaarLogin } from "@/components/AnonAadhaarLogin";
 import { useAnonAadhaarContext } from "@/contexts/AnonAadhaarContext";
+import { HeroVideoDialogDemo } from "@/components/VideoBox";
 
 const Index = () => {
   const { isConnected } = useWallet();
@@ -13,10 +14,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       
       <main className="flex-1">
         {/* Hero Section */}
+{/* <section className="border border-red-500 h-screen px-4 bg-white flex justify-center w-full">
+  <img src="/heroBg.png" alt="heroBg" />
+</section> */}
         <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-edu-light via-white to-edu-light/50">
           <div className="container mx-auto max-w-6xl">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -96,7 +99,12 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        <section className="my-10 py-16 px-4 bg-white flex justify-center">
         
+        <HeroVideoDialogDemo />
+        </section>
+
         {/* Features Section */}
         <section className="py-16 px-4 bg-white">
           <div className="container mx-auto max-w-6xl">
@@ -142,55 +150,7 @@ const Index = () => {
         </section>
       </main>
       
-      <footer className="bg-edu-dark text-white py-12 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="rounded-md bg-white p-1">
-                  <div className="text-lg font-bold text-edu-primary">E</div>
-                </div>
-                <div className="font-bold text-lg text-white">
-                  EduDAO
-                </div>
-              </div>
-              <p className="text-gray-400">
-                A decentralized autonomous organization for transparent student scholarships and grants.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="font-bold mb-4">Platform</h3>
-              <ul className="space-y-2">
-                <li><Link to="/scholarships" className="text-gray-400 hover:text-white transition-colors">Scholarships</Link></li>
-                <li><Link to="/my-dashboard" className="text-gray-400 hover:text-white transition-colors">My Dashboard</Link></li>
-                <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">About</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-bold mb-4">Resources</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">EDUChain</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Anon Aadhaar</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-bold mb-4">Legal</h3>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="mt-12 pt-6 border-t border-gray-700 text-gray-400 text-sm">
-            <p>© {new Date().getFullYear()} EduDAO. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+     
     </div>
   );
 };

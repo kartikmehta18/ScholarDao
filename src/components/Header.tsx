@@ -28,10 +28,10 @@ export function Header() {
         <div className="flex items-center gap-6">
           <Link to="/" className="flex items-center gap-2">
             <div className="rounded-md bg-edu-primary p-1">
-              <div className="text-2xl font-bold text-white">E</div>
+              <div className="text-2xl font-bold text-white">S</div>
             </div>
             <div className="font-bold text-xl text-edu-dark">
-              EduDAO
+              ScholarDAO
             </div>
           </Link>
           

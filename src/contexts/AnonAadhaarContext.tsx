@@ -2,7 +2,6 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import { AnonAadhaarProvider as AnonAadhaarReactProvider, useAnonAadhaar, type AnonAadhaarProof } from '@anon-aadhaar/react';
 
-// Generate a random nullifier seed for production use
 const NULLIFIER_SEED = 123456789; // Replace with crypto-secure value in production
 
 type AnonAadhaarContextType = {
@@ -43,7 +42,6 @@ const AnonAadhaarContent = ({ children }: { children: ReactNode }) => {
     if (anonAadhaar.status === 'logged-in') {
       setIsVerified(true);
       
-      // Extract user details if available in the proof
       if (anonAadhaar.proof) {
         const proof = anonAadhaar.proof as AnonAadhaarProof;
         setUserDetails({

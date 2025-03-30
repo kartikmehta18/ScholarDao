@@ -24,7 +24,6 @@ export const DAOProvider = ({ children }: { children: ReactNode }) => {
   const [lastRefresh, setLastRefresh] = useState(0);
 
   const fetchScholarships = async () => {
-    // Don't refresh too frequently
     const now = Date.now();
     if (now - lastRefresh < 5000 && scholarships.length > 0) {
       return;
@@ -36,7 +35,7 @@ export const DAOProvider = ({ children }: { children: ReactNode }) => {
       setScholarships(transformedScholarships);
       setLastRefresh(now);
       
-      // Reset error state if successful
+     
       if (hasError) {
         setHasError(false);
       }
@@ -45,7 +44,7 @@ export const DAOProvider = ({ children }: { children: ReactNode }) => {
       setHasError(true);
       
       if (!scholarships.length) {
-        // Only show toast when we have no data to display
+        
         toast({
           title: "Connection issue",
           description: "Using demo data for now. Connect your wallet to continue.",
@@ -60,7 +59,6 @@ export const DAOProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     fetchScholarships();
     
-    // Set up a refresh interval (every 30 seconds instead of 10 to reduce API calls)
     const intervalId = setInterval(() => {
       if (!hasError) {
         fetchScholarships();
@@ -70,7 +68,6 @@ export const DAOProvider = ({ children }: { children: ReactNode }) => {
     return () => clearInterval(intervalId);
   }, [hasError]);
 
-  // Import the scholarship actions from the hook
   const { 
     createScholarship: createScholarshipAction, 
     approveScholarship: approveScholarshipAction,
@@ -78,7 +75,6 @@ export const DAOProvider = ({ children }: { children: ReactNode }) => {
     loading: actionsLoading 
   } = useScholarshipActions(scholarships, fetchScholarships);
 
-  // Wrap the imported actions
   const createScholarship = async (
     title: string,
     description: string,
@@ -100,7 +96,6 @@ export const DAOProvider = ({ children }: { children: ReactNode }) => {
     (s) => s.status === 'pending' && s.deadline > Date.now()
   );
 
-  // Use the combined loading state
   const isLoading = loading || actionsLoading;
 
   return (

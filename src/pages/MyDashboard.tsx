@@ -1,5 +1,4 @@
 
-import { Header } from "@/components/Header";
 import { AnonAadhaarLogin } from "@/components/AnonAadhaarLogin";
 import { useDAO } from "@/contexts/DAOContext";
 import { useAnonAadhaarContext } from "@/contexts/AnonAadhaarContext";
@@ -73,7 +72,6 @@ const MyDashboard = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       
       <main className="flex-1 container mx-auto max-w-6xl px-4 py-8">
         <h1 className="text-3xl font-bold text-edu-dark mb-8">My Dashboard</h1>
@@ -138,13 +136,7 @@ const MyDashboard = () => {
         )}
       </main>
       
-      <footer className="bg-edu-dark text-white py-6 px-4 mt-12">
-        <div className="container mx-auto max-w-6xl">
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} EduDAO. All rights reserved.
-          </p>
-        </div>
-      </footer>
+     
     </div>
   );
 };

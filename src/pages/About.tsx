@@ -8,15 +8,14 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       
       <main className="flex-1 container mx-auto max-w-6xl px-4 py-8">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold text-edu-dark mb-6">About EduDAO</h1>
+          <h1 className="text-4xl font-bold text-edu-dark mb-6">About ScholarDAO</h1>
           
           <div className="prose prose-lg max-w-none">
             <p className="text-xl text-gray-600 mb-8">
-              EduDAO is a decentralized autonomous organization (DAO) built on the EDUChain network, designed to make student scholarships and grants more transparent, accessible, and secure.
+              ScholarDAO is a decentralized autonomous organization (DAO) built on the EDUChain network, designed to make student scholarships and grants more transparent, accessible, and secure.
             </p>
             
             <div className="my-12 grid md:grid-cols-2 gap-8">
@@ -28,11 +27,11 @@ const About = () => {
                     </div>
                     <CardTitle>Community Governed</CardTitle>
                   </div>
-                  <CardDescription>Transparent decision making</CardDescription>
+                  <CardDescription><span className="font-bold">Transparent decision making</span></CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
-                    All scholarship decisions are made through community voting. Anyone with a verified identity can participate in the governance process, ensuring fair distribution of funds.
+                    All scholarship decisions are made through community voting. An official with a verified identity can participate in the governance process, ensuring fair distribution of funds.
                   </p>
                 </CardContent>
               </Card>
@@ -45,7 +44,7 @@ const About = () => {
                     </div>
                     <CardTitle>Privacy Preserved</CardTitle>
                   </div>
-                  <CardDescription>Zero-knowledge verification</CardDescription>
+                  <CardDescription><span className="font-bold">Zero-knowledge verification </span></CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">
@@ -77,7 +76,7 @@ const About = () => {
                 <div>
                   <h3 className="text-xl font-bold text-edu-dark">Verify Your Identity</h3>
                   <p className="text-gray-600 mt-1">
-                    Verify your identity using Anon Aadhaar's zero-knowledge proof system. This ensures your privacy while confirming your eligibility.
+                    Verify your identity using Anon Aadhaar's <span className="font-bold"> zero-knowledge proof system.</span> This ensures your privacy while confirming your eligibility.
                   </p>
                 </div>
               </li>
@@ -116,7 +115,7 @@ const About = () => {
             <div className="bg-edu-light rounded-lg p-8 my-12 text-center">
               <h2 className="text-2xl font-bold text-edu-dark mb-4">Ready to Get Started?</h2>
               <p className="text-gray-600 mb-6 max-w-md mx-auto">
-                Join EduDAO today and be part of a revolutionary approach to educational funding and scholarships.
+                Join ScholarDAO today and be part of a revolutionary approach to educational funding and scholarships.
               </p>
               <Link to="/scholarships">
                 <Button size="lg" className="bg-edu-primary hover:bg-edu-primary/90">
@@ -129,13 +128,7 @@ const About = () => {
         </div>
       </main>
       
-      <footer className="bg-edu-dark text-white py-6 px-4 mt-auto">
-        <div className="container mx-auto max-w-6xl">
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} EduDAO. All rights reserved.
-          </p>
-        </div>
-      </footer>
+    
     </div>
   );
 };

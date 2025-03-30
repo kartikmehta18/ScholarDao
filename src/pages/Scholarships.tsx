@@ -1,5 +1,3 @@
-
-import { Header } from "@/components/Header";
 import { ScholarshipCard } from "@/components/ScholarshipCard";
 import { CreateScholarshipForm } from "@/components/CreateScholarshipForm";
 import { useDAO } from "@/contexts/DAOContext";
@@ -164,7 +162,6 @@ const Scholarships = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
       
       <main className="flex-1 container mx-auto max-w-6xl px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
@@ -187,13 +184,16 @@ const Scholarships = () => {
           </div>
         </div>
         
-        <div className="mb-6 rounded-md bg-blue-50 p-4 text-blue-800 flex items-center gap-2">
-          <Shield className="h-5 w-5" />
-          <div>
+        <div className="mb-6 rounded-md bg-blue-50 p-4 text-blue-800 flex items-start gap-2">
+          <Shield className="h-5 w-5 mt-1" />
+          <div >
             <p className="font-medium">EDUChain Scholarship System</p>
-            <p className="text-sm mt-1">
-              Government creates scholarships, students apply, government approves applications, and financiers fund them with 0.001 EDU.
-            </p>
+            <p className="text-sm mt-1">1. Scholarships are provided by Government </p>
+            <p className="text-sm mt-1">2. Students can apply for the scolarships with their documents </p>
+            <p className="text-sm mt-1">3. Once documents are verified, government approves applications</p>
+            <p className="text-sm mt-1">4. After approval financer approves payment to the applicant with 0.001 EDU.</p>
+            
+              
           </div>
         </div>
         
@@ -247,13 +247,7 @@ const Scholarships = () => {
         </Tabs>
       </main>
       
-      <footer className="bg-edu-dark text-white py-6 px-4 mt-12">
-        <div className="container mx-auto max-w-6xl">
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} EduDAO. All rights reserved.
-          </p>
-        </div>
-      </footer>
+     
     </div>
   );
 };

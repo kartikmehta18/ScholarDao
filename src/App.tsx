@@ -11,6 +11,8 @@ import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import { AnonAadhaarProvider } from "./contexts/AnonAadhaarContext";
 import { DAOProvider } from "./contexts/DAOContext";
+import Footer from "./components/Footer";
+import { Header } from "./components/Header";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +24,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+          <Header />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/scholarships" element={<Scholarships />} />
@@ -29,6 +32,7 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+          <Footer />
           </BrowserRouter>
         </DAOProvider>
       </AnonAadhaarProvider>
