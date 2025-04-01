@@ -26,13 +26,14 @@ export function Header() {
     }`}>
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center gap-6">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="rounded-md bg-edu-primary p-1">
-              <div className="text-2xl font-bold text-white">S</div>
-            </div>
+            <Link to="/" className="flex items-center gap-4 mr-4">
+           
+            <img src="/scholarDaoLogo.png" alt="" height={80} width={80}/>
             <div className="font-bold text-xl text-edu-dark">
               ScholarDAO
             </div>
+            <span className="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500">Beta</span>
+
           </Link>
           
           <nav className="hidden md:flex gap-6">

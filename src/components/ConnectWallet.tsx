@@ -40,7 +40,8 @@ export function ConnectWallet() {
         <Button 
           onClick={connectWallet} 
           disabled={isLoading}
-          className="bg-edu-primary hover:bg-edu-primary/90 text-white"
+          // className="bg-edu-primary hover:bg-edu-primary/90 text-white"
+          className="bg-purple-700 hover:to-purple-700/90 text-white"
         >
           <Unlock className="mr-2 h-4 w-4" />
           {isLoading ? "Connecting..." : "Connect Wallet"}

@@ -1,8 +1,7 @@
 
-import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { useWallet } from "@/hooks/use-wallet";
-import { ArrowRight, Shield, Users } from "lucide-react";
+import { ArrowRight, Shield, SquareCode, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AnonAadhaarLogin } from "@/components/AnonAadhaarLogin";
 import { useAnonAadhaarContext } from "@/contexts/AnonAadhaarContext";
@@ -32,7 +31,7 @@ const Index = () => {
                 </p>
                 <div className="flex flex-wrap gap-4 pt-4">
                   <Link to="/scholarships">
-                    <Button size="lg" className="bg-edu-primary hover:bg-edu-primary/90">
+                    <Button size="lg" className="bg-purple-700 hover:bg-purple-700/90">
                       Browse Scholarships
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -46,13 +45,18 @@ const Index = () => {
                 
                 <div className="flex gap-6 pt-6">
                   <div className="flex items-center gap-2">
-                    <Users className="h-5 w-5 text-edu-secondary" />
+                    <Users className="h-5 w-5 text-purple-600" />
                     <span className="text-gray-600">Community Governed</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-edu-secondary" />
+                    <Shield className="h-5 w-5 text-purple-600" />
                     <span className="text-gray-600">Private & Secure</span>
                   </div>
+                </div>
+                <div className="flex gap-2 items-center">
+                <SquareCode  className="h-5 w-5 text-purple-600"/>
+                  <span className="text-gray-600">Built on</span>
+                  <img src="/educhainLogo.png" alt="educhainLogo" height={180} width={180} />
                 </div>
               </div>
               
@@ -66,7 +70,7 @@ const Index = () => {
                       </p>
                       <div className="flex justify-center pt-4">
                         <Link to="/scholarships">
-                          <Button size="lg" className="bg-edu-primary hover:bg-edu-primary/90">
+                          <Button size="lg" className="bg-green-600 hover:bg-green-600/90">
                             Connect & Explore
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>
@@ -86,7 +90,7 @@ const Index = () => {
                       </p>
                       <div className="flex justify-center pt-4">
                         <Link to="/my-dashboard">
-                          <Button size="lg" className="bg-edu-primary hover:bg-edu-primary/90">
+                          <Button size="lg" className="bg-green-600 hover:bg-green-600/90">
                             Go to Your Dashboard
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Button>

@@ -40,7 +40,7 @@ export function ScholarshipCard({
 
   return (
     <Card className="overflow-hidden">
-      <CardHeader className="bg-edu-light pb-4">
+      <CardHeader className="bg-purple-50 pb-4">
         <div className="flex items-center justify-between">
           <CardTitle className="text-xl text-edu-dark">{title}</CardTitle>
           <div className="rounded-full bg-edu-primary/10 text-edu-primary px-3 py-1 text-sm font-medium">
@@ -57,6 +57,8 @@ export function ScholarshipCard({
         <p className="text-gray-700 mb-4">{description}</p>
         
         <div className="space-y-4">
+       
+          {/* FUNCTIONALITY YET TO BE ADDED */}
           <div>
             <div className="flex justify-between text-sm mb-1">
               <div className="flex items-center">

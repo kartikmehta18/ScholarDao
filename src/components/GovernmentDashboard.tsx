@@ -148,7 +148,7 @@ export function GovernmentDashboard() {
                           <TableCell>
                             <Button 
                               size="sm" 
-                              className="bg-edu-primary hover:bg-edu-primary/90"
+                              className="bg-edu-accent hover:bg-edu-accent/90"
                               onClick={() => handleApprove(
                                 scholarships.find(s => s.id === selectedScholarship)!,
                                 application.applicant_address

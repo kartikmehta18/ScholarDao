@@ -32,16 +32,13 @@ const Scholarships = () => {
     
     setIsLoading(true);
     try {
-      // Fetch all applications by this user using the helper function
       const applications = await fetchUserApplications(address);
       
-      // Get IDs of scholarships user has applied to
       const appliedIds = applications?.map(app => app.scholarship_id) || [];
       setAppliedScholarships(appliedIds);
       
     } catch (error) {
       console.error("Error fetching applications:", error);
-      // Don't show error toast here to avoid overwhelming the user
     } finally {
       setIsLoading(false);
     }
@@ -75,7 +72,6 @@ const Scholarships = () => {
           title: "Already applied",
           description: "You have already applied for this scholarship",
         });
-        // Add to local state to prevent duplicate applications
         setAppliedScholarships([...appliedScholarships, scholarshipId]);
         return;
       }
@@ -93,7 +89,6 @@ const Scholarships = () => {
     } catch (error: any) {
       console.error("Error applying for scholarship:", error);
       
-      // Add to local state anyway to prevent further attempts that might fail
       setAppliedScholarships([...appliedScholarships, scholarshipId]);
       
       toast({
@@ -123,13 +118,13 @@ const Scholarships = () => {
         <div className="p-4 bg-gray-50 border-t">
           {scholarship.status === 'pending' && (
             hasApplied ? (
-              <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+              <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
                 Application submitted
               </div>
             ) : (
               <Button 
                 onClick={() => handleApply(scholarship.id)}
-                className="w-full bg-edu-primary hover:bg-edu-primary/90"
+                className="w-full bg-edu-accent hover:bg-edu-accent/90"
                 disabled={isLoading}
               >
                 <Award className="mr-2 h-4 w-4" />
@@ -184,7 +179,7 @@ const Scholarships = () => {
           </div>
         </div>
         
-        <div className="mb-6 rounded-md bg-blue-50 p-4 text-blue-800 flex items-start gap-2">
+        <div className="mb-6 rounded-md bg-purple-50 p-4 text-purple-800 flex items-start gap-2">
           <Shield className="h-5 w-5 mt-1" />
           <div >
             <p className="font-medium">EDUChain Scholarship System</p>
