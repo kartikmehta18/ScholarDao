@@ -104,6 +104,10 @@ const Index = () => {
           </div>
         </section>
 
+        <section className="  bg-white flex justify-center">
+        
+        <img src="mainBg.png" alt="mainBg" height={1400} width={1400} />
+        </section>
         <section className="my-10 py-16 px-4 bg-white flex justify-center">
         
         <HeroVideoDialogDemo />
