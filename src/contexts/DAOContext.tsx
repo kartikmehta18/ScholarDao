@@ -12,6 +12,7 @@ const DAOContext = createContext<DAOContextType>({
   loading: false,
   approveScholarship: async () => {},
   fundScholarship: async () => {},
+  fetchScholarships: async () => {},
 });
 
 export const useDAO = () => useContext(DAOContext);
@@ -25,34 +26,35 @@ export const DAOProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchScholarships = async () => {
     const now = Date.now();
-    if (now - lastRefresh < 5000 && scholarships.length > 0) {
-      return;
-    }
+    // Force refresh when manually called, otherwise respect throttling
+    const shouldRefresh = now - lastRefresh >= 5000 || scholarships.length === 0;
     
-    setLoading(true);
-    try {
-      const transformedScholarships = await fetchScholarshipsData();
-      setScholarships(transformedScholarships);
-      setLastRefresh(now);
-      
-     
-      if (hasError) {
-        setHasError(false);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      setHasError(true);
-      
-      if (!scholarships.length) {
+    if (shouldRefresh) {
+      setLoading(true);
+      try {
+        const transformedScholarships = await fetchScholarshipsData();
+        setScholarships(transformedScholarships);
+        setLastRefresh(now);
         
-        toast({
-          title: "Connection issue",
-          description: "Using demo data for now. Connect your wallet to continue.",
-          variant: "destructive",
-        });
+       
+        if (hasError) {
+          setHasError(false);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setHasError(true);
+        
+        if (!scholarships.length) {
+          
+          toast({
+            title: "Connection issue",
+            description: "Using demo data for now. Connect your wallet to continue.",
+            variant: "destructive",
+          });
+        }
+      } finally {
+        setLoading(false);
       }
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -90,6 +92,8 @@ export const DAOProvider = ({ children }: { children: ReactNode }) => {
 
   const fundScholarship = async (id: string, applicationId: string) => {
     await fundScholarshipAction(id, applicationId);
+    // Refresh data after funding a scholarship
+    await fetchScholarships();
   };
 
   const pendingScholarships = scholarships.filter(
@@ -107,6 +111,7 @@ export const DAOProvider = ({ children }: { children: ReactNode }) => {
         loading: isLoading,
         approveScholarship,
         fundScholarship,
+        fetchScholarships,
       }}
     >
       {children}

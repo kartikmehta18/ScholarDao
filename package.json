@@ -13,6 +13,7 @@
   "dependencies": {
     "@anon-aadhaar/react": "^2.4.3",
     "@hookform/resolvers": "^3.9.0",
+    "@opencampus/ocid-connect-js": "^2.0.1",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-aspect-ratio": "^1.1.0",

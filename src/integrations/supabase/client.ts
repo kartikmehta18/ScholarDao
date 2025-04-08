@@ -1,3 +1,4 @@
+
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
@@ -109,37 +110,81 @@ export const getSupabaseClient = () => {
 };
 
 // Create a mock client for fallback when Supabase is unavailable
-export const createMockClient = () => {
+export function createMockClient() {
   console.log("Using mock Supabase client due to connection issues");
+  
+  // Helper to create a standard response shape
+  const createResponse = <T>(data: T) => {
+    return Promise.resolve({ data, error: null });
+  };
+  
+  // Helper to create chained query methods
+  const createQueryBuilder = (mockData: any[] = []) => {
+    const builder = {
+      eq: (column: string, value: any) => builder,
+      neq: (column: string, value: any) => builder,
+      gt: (column: string, value: any) => builder,
+      gte: (column: string, value: any) => builder,
+      lt: (column: string, value: any) => builder,
+      lte: (column: string, value: any) => builder,
+      like: (column: string, value: any) => builder,
+      ilike: (column: string, value: any) => builder,
+      is: (column: string, value: any) => builder,
+      in: (column: string, values: any[]) => builder,
+      contains: (column: string, value: any) => builder,
+      containedBy: (column: string, value: any) => builder,
+      rangeLt: (column: string, range: any) => builder,
+      rangeGt: (column: string, range: any) => builder,
+      rangeGte: (column: string, range: any) => builder,
+      rangeLte: (column: string, range: any) => builder,
+      rangeAdjacent: (column: string, range: any) => builder,
+      overlaps: (column: string, value: any) => builder,
+      textSearch: (column: string, query: string, options?: any) => builder,
+      filter: (column: string, operator: string, value: any) => builder,
+      not: (column: string, operator: string, value: any) => builder,
+      or: (filters: string, options?: any) => builder,
+      match: (query: any) => createResponse(mockData),
+      single: () => createResponse(mockData.length > 0 ? mockData[0] : null),
+      order: (column: string, options?: any) => builder,
+      limit: (count: number) => createResponse(mockData.slice(0, count)),
+      range: (from: number, to: number) => builder,
+      abortSignal: (signal: AbortSignal) => builder,
+      select: (columns?: string) => builder,
+      then: (onFulfilled: any) => createResponse(mockData).then(onFulfilled),
+    };
+    
+    return builder;
+  };
+
   return {
-    from: (table: string) => ({
-      select: () => ({
-        eq: (column: string, value: any) => ({
-          single: () => Promise.resolve({ data: null, error: null }),
-          order: (column: string, options: any) => ({
-            limit: (count: number) => Promise.resolve({ data: [], error: null }),
-          }),
-          limit: (count: number) => Promise.resolve({ data: [], error: null }),
+    from: (table: string) => {
+      return {
+        select: (columns?: string) => createQueryBuilder([]),
+        insert: (values: any) => createResponse({ ...values, id: 'mock-id-' + Date.now() }),
+        update: (values: any) => ({
+          eq: (column: string, value: any) => createResponse(values),
+          match: (criteria: any) => createResponse(values),
         }),
-        single: () => Promise.resolve({ data: null, error: null }),
-        order: (column: string, options: any) => ({
-          limit: (count: number) => Promise.resolve({ data: [], error: null }),
+        delete: () => ({
+          eq: (column: string, value: any) => createResponse([]),
+          match: (criteria: any) => createResponse([]),
         }),
-        limit: (count: number) => Promise.resolve({ data: [], error: null }),
-      }),
-      insert: (values: any) => Promise.resolve({ data: values, error: null }),
-      update: (values: any) => ({
-        eq: (column: string, value: any) => Promise.resolve({ data: values, error: null }),
-        match: (criteria: any) => Promise.resolve({ data: values, error: null }),
-      }),
-      delete: () => ({
-        eq: (column: string, value: any) => Promise.resolve({ data: [], error: null }),
-        match: (criteria: any) => Promise.resolve({ data: [], error: null }),
-      }),
-    }),
+        upsert: (values: any) => createResponse(values),
+      };
+    },
     auth: {
       getSession: async () => ({ data: { session: null }, error: null }),
       signOut: async () => ({ error: null }),
     },
+    storage: {
+      from: (bucket: string) => ({
+        upload: (path: string, file: any) => createResponse({ path }),
+        download: (path: string) => createResponse(new Blob()),
+        getPublicUrl: (path: string) => ({ data: { publicUrl: `mock-url/${path}` } }),
+        remove: (paths: string[]) => createResponse({}),
+        list: (folder: string) => createResponse([]),
+      }),
+    },
+    rpc: (fn: string, params?: any) => createResponse(null),
   };
-};
+}
