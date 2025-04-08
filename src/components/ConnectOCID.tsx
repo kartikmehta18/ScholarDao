@@ -219,7 +219,7 @@ export function ConnectOCID() {
     <Button 
       onClick={handleConnect} 
       disabled={isConnecting}
-      className="bg-amber-600 hover:bg-amber-700 text-white"
+      className="bg-black hover:bg-black text-white"
     >
       {isConnecting ? (
         <>
@@ -228,7 +228,8 @@ export function ConnectOCID() {
         </>
       ) : (
         <>
-          <Lock className="mr-2 h-4 w-4" />
+          {/* <Lock className="mr-2 h-4 w-4" /> */}
+          <img src="/edu.png" className="mr-2 h-6 w-6" alt="OCID Logo" />
           Connect with OCID
         </>
       )}
