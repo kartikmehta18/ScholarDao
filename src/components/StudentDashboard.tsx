@@ -4,16 +4,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useDAO } from "@/contexts/DAOContext";
 import { ScholarshipCard } from "@/components/ScholarshipCard";
 import { Button } from "@/components/ui/button";
-import { Check, FileText, Award } from "lucide-react";
+import { Check, FileText, Award, RefreshCw } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useWallet } from "@/hooks/use-wallet";
-import { getSupabaseClient } from "@/integrations/supabase/client";
+import { fetchUserApplications } from "@/utils/dao-utils";
 
 export function StudentDashboard() {
   const { address } = useWallet();
-  const { scholarships, pendingScholarships } = useDAO();
+  const { scholarships, pendingScholarships, fetchScholarships } = useDAO();
   const [appliedScholarships, setAppliedScholarships] = useState<string[]>([]);
   const [receivedScholarships, setReceivedScholarships] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   
   useEffect(() => {
     if (address) {
@@ -24,36 +25,40 @@ export function StudentDashboard() {
   const fetchApplications = async () => {
     if (!address) return;
     
+    setIsLoading(true);
     try {
-      const client = getSupabaseClient();
-      // Fetch all applications by this user
-      const { data: applications, error } = await client
-        .from('applications')
-        .select('*')
-        .eq('applicant_address', address);
+      const applications = await fetchUserApplications(address);
       
-      if (error) throw error;
-      
-      // Get IDs of scholarships user has applied to
       const appliedIds = applications?.map(app => app.scholarship_id) || [];
       setAppliedScholarships(appliedIds);
       
-      // Get IDs of scholarships user has been approved for
       const approvedApps = applications?.filter(app => app.status === 'approved') || [];
       const approvedIds = approvedApps.map(app => app.scholarship_id);
       setReceivedScholarships(approvedIds);
       
     } catch (error) {
       console.error("Error fetching applications:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
   
-  // Filter scholarships that user has applied for
+  const handleRefresh = async () => {
+    setIsLoading(true);
+    try {
+      await fetchScholarships();
+      await fetchApplications();
+    } catch (error) {
+      console.error("Error refreshing data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
   const myAppliedScholarships = scholarships.filter(s => 
     appliedScholarships.includes(s.id)
   );
   
-  // Filter scholarships that user has been approved for
   const myReceivedScholarships = scholarships.filter(s => 
     receivedScholarships.includes(s.id)
   );
@@ -62,13 +67,26 @@ export function StudentDashboard() {
     <div className="space-y-6">
       <Card>
         <CardHeader className="pb-3">
-          <CardTitle className="text-xl flex items-center gap-2">
-            <Award className="h-5 w-5 text-edu-primary" />
-            Student Dashboard
-          </CardTitle>
-          <CardDescription>
-            Apply for scholarships and track your applications
-          </CardDescription>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle className="text-xl flex items-center gap-2">
+                <Award className="h-5 w-5 text-edu-primary" />
+                Student Dashboard
+              </CardTitle>
+              <CardDescription>
+                Apply for scholarships and track your applications
+              </CardDescription>
+            </div>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={handleRefresh}
+              disabled={isLoading}
+            >
+              <RefreshCw className={`h-4 w-4 mr-1 ${isLoading ? 'animate-spin' : ''}`} />
+              Refresh
+            </Button>
+          </div>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-3 gap-4 mb-6">
@@ -93,7 +111,12 @@ export function StudentDashboard() {
             </TabsList>
             
             <TabsContent value="applications" className="space-y-6">
-              {myAppliedScholarships.length === 0 ? (
+              {isLoading ? (
+                <div className="text-center py-8">
+                  <RefreshCw className="h-8 w-8 animate-spin mx-auto text-edu-primary mb-2" />
+                  <p className="text-gray-500">Loading your applications...</p>
+                </div>
+              ) : myAppliedScholarships.length === 0 ? (
                 <div className="bg-gray-50 rounded-md p-6 text-center text-gray-500">
                   <p>You haven't applied for any scholarships yet</p>
                   <Button 
@@ -121,7 +144,12 @@ export function StudentDashboard() {
             </TabsContent>
             
             <TabsContent value="received" className="space-y-6">
-              {myReceivedScholarships.length === 0 ? (
+              {isLoading ? (
+                <div className="text-center py-8">
+                  <RefreshCw className="h-8 w-8 animate-spin mx-auto text-edu-primary mb-2" />
+                  <p className="text-gray-500">Loading your scholarships...</p>
+                </div>
+              ) : myReceivedScholarships.length === 0 ? (
                 <div className="bg-gray-50 rounded-md p-6 text-center text-gray-500">
                   <p>You haven't received any scholarships yet</p>
                 </div>

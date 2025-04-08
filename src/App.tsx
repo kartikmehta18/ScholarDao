@@ -13,8 +13,15 @@ import { AnonAadhaarProvider } from "./contexts/AnonAadhaarContext";
 import { DAOProvider } from "./contexts/DAOContext";
 import Footer from "./components/Footer";
 import { Header } from "./components/Header";
+import { OCConnect } from '@opencampus/ocid-connect-js';
 
 const queryClient = new QueryClient();
+
+const opts = {
+  clientId: '<Does_Not_Matter_For_Sandbox_mode>',
+  redirectUri: window.location.origin,
+  referralCode: 'PARTNER6'
+}
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -24,15 +31,17 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-          <Header />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/scholarships" element={<Scholarships />} />
-              <Route path="/my-dashboard" element={<MyDashboard />} />
-              <Route path="/about" element={<About />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          <Footer />
+            <Header />
+            <OCConnect opts={opts} sandboxMode={true}>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/scholarships" element={<Scholarships />} />
+                <Route path="/my-dashboard" element={<MyDashboard />} />
+                <Route path="/about" element={<About />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </OCConnect>
+            <Footer />
           </BrowserRouter>
         </DAOProvider>
       </AnonAadhaarProvider>

@@ -1,5 +1,6 @@
 
 import { ConnectWallet } from "./ConnectWallet";
+import { ConnectOCID } from "./ConnectOCID";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -53,6 +54,7 @@ export function Header() {
         </div>
         
         <div className="flex items-center gap-4">
+          <ConnectOCID />
           <ConnectWallet />
         </div>
       </div>

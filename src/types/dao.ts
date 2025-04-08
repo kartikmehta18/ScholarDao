@@ -20,6 +20,14 @@ export type Scholarship = {
   applicants: string[];
 };
 
+export interface Application {
+  id: string;
+  scholarship_id: string;
+  applicant_address: string;
+  status: string;
+  created_at?: string;
+}
+
 export interface DAOContextType {
   scholarships: Scholarship[];
   createScholarship: (title: string, description: string, amount: number, deadline: number) => Promise<void>;
@@ -27,4 +35,5 @@ export interface DAOContextType {
   loading: boolean;
   approveScholarship: (id: string, recipientAddress: string) => Promise<void>;
   fundScholarship: (id: string, applicationId: string) => Promise<void>;
+  fetchScholarships: () => Promise<void>;
 }
