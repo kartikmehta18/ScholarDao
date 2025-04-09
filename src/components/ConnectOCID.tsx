@@ -175,7 +175,7 @@ export function ConnectOCID() {
               )}
 
               <div className="space-y-2">
-                <div className="flex items-center justify-between">
+                {/* <div className="flex items-center justify-between">
                   <span className="font-medium text-gray-500">Name:</span>
                   <span className="font-semibold">{ocidProfile.name || 'Not provided'}</span>
                 </div>
@@ -183,7 +183,7 @@ export function ConnectOCID() {
                 <div className="flex items-center justify-between">
                   <span className="font-medium text-gray-500">Email:</span>
                   <span className="font-semibold">{ocidProfile.email || 'Not provided'}</span>
-                </div>
+                </div> */}
 
                 {ocidProfile.ocid && (
                   <div className="flex items-center justify-between">
