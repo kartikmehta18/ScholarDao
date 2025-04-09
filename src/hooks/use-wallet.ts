@@ -24,7 +24,7 @@ declare global {
 }
 
 // Convert chain ID to hexadecimal to ensure proper format
-const EDUCHAIN_CHAIN_ID = '6644224'; // Hexadecimal format for chain ID
+const EDUCHAIN_CHAIN_ID = '656476'; // Hexadecimal format for chain ID
 const EDUCHAIN_CONFIG = {
   chainId: EDUCHAIN_CHAIN_ID,
   chainName: 'EDU Chain Testnet',
