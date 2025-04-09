@@ -9,7 +9,7 @@ import { OCAuthSandbox, OCAuthLive } from '@opencampus/ocid-connect-js';
 // Initialize the auth SDK based on environment
 const getAuthSdk = () => {
   const opts = {
-    redirectUri: "http://localhost:8080/", // Redirect back to our app
+    redirectUri: "https://acehack-scholardao.vercel.app/", // Redirect back to our app
     // redirectUri: window.location.origin, // Redirect back to our app
     referralCode: 'SCHOLARDAO', // Unique identifier for our app
   };
@@ -146,7 +146,7 @@ export function ConnectOCID() {
         <Button 
           variant="outline" 
           onClick={handleShowProfile}
-          className="bg-amber-50 text-amber-700 border-amber-300 hover:bg-amber-100"
+          className="bg-amber-50 text-green-700 border-green-300 hover:bg-green-100"
         >
           <User className="mr-2 h-4 w-4" />
           <span>
@@ -169,7 +169,7 @@ export function ConnectOCID() {
                   <img 
                     src={ocidProfile.picture} 
                     alt="Profile" 
-                    className="rounded-full w-20 h-20 object-cover border-2 border-amber-300"
+                    className="rounded-full w-20 h-20 object-cover border-2 border-green-300"
                   />
                 </div>
               )}
@@ -219,7 +219,7 @@ export function ConnectOCID() {
     <Button 
       onClick={handleConnect} 
       disabled={isConnecting}
-      className="bg-black hover:bg-black text-white"
+      className="bg-[#141BEB] hover:bg-black text-white"
     >
       {isConnecting ? (
         <>
